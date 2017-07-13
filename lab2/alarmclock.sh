@@ -2,6 +2,7 @@
 
 #Ключ извлечения записей из crontab
 KEYGREP=" #alarmclock"
+#Название проигрывателя
 PLAYER="mpg123 "
 STARS=" * * * "
 
