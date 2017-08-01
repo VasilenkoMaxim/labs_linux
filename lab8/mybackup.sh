@@ -381,7 +381,7 @@ function CreateEditDeleteTaskDialog(){
 	done
 	return 0
 }
-
+#сделать проверку при введении пустой строки и установки тогда на @
 function CreateTaskDialog(){ #$COMMAND $TEGGREP $PATHTMP1 $FTMP1 $PATHCONFIG 
 	let 'N=N+1'
 	echo "Что ты хочешь скопировать, введи путь директории или укажи блочное устройство"
