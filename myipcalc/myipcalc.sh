@@ -124,34 +124,24 @@ MASKmas[2]=${A[2]}
 MASKmas[3]=${A[3]}
 let 'WC=MASK^(256*256*256*256-1)' #Wildcard
 OneToFour $WC
-WCmas[0]=${A[0]}
-WCmas[1]=${A[1]}
-WCmas[2]=${A[2]}
-WCmas[3]=${A[3]}
+WCmas=("${A[@]}")
+
 let 'NW=MASK&IP' #Network
 OneToFour $NW
-NWmas[0]=${A[0]}
-NWmas[1]=${A[1]}
-NWmas[2]=${A[2]}
-NWmas[3]=${A[3]}
+NWmas=("${A[@]}")
+
 let 'HMin=NW+1' #HostMin
 OneToFour $HMin
-HMinmas[0]=${A[0]}
-HMinmas[1]=${A[1]}
-HMinmas[2]=${A[2]}
-HMinmas[3]=${A[3]}
+HMinmas=("${A[@]}")
+
 let 'HMax=NW+WC-1' #HostMax
 OneToFour $HMax
-HMaxmas[0]=${A[0]}
-HMaxmas[1]=${A[1]}
-HMaxmas[2]=${A[2]}
-HMaxmas[3]=${A[3]}
+HMaxmas=("${A[@]}")
+
 let 'BC=NW+WC' #Broadcast
 OneToFour $BC
-BCmas[0]=${A[0]}
-BCmas[1]=${A[1]}
-BCmas[2]=${A[2]}
-BCmas[3]=${A[3]}
+BCmas=("${A[@]}")
+
 let 'HOSTS=HMax-HMin+1';
 
 #tput setaf $цифра - установка цвета печати сообщения
@@ -166,6 +156,5 @@ printf "%-11s" "HostMin:"; printf "%-21s" "${HMinmas[0]}.${HMinmas[1]}.${HMinmas
 printf "%-11s" "HostMax:"; printf "%-21s" "${HMaxmas[0]}.${HMaxmas[1]}.${HMaxmas[2]}.${HMaxmas[3]}"; PrintBitsFromInt $HMax 1 ${A[4]}; printf "\n"
 printf "%-11s" "Broadcast:"; printf "%-21s" "${BCmas[0]}.${BCmas[1]}.${BCmas[2]}.${BCmas[3]}"; PrintBitsFromInt $BC 1 ${A[4]}; printf "\n"
 printf "%-11s" "Hosts/Net"; printf "%-21s" "$HOSTS"; printf "\n"
-
 
 exit 0
