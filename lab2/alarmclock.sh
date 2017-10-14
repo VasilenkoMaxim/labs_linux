@@ -6,7 +6,6 @@ KEYGREP=" #alarmclock"
 PLAYER="mpg123 "
 STARS=" * * * "
 
-
 #Выключение будильников
 if [[ $1 = "stop" ]]
 then
@@ -24,10 +23,8 @@ fi
 #Извлечение записей из crontab и помещение их в файлы:
 #actemp1.txt - помеченные ключом
 #actemp0.txt - все остальные
-crontab -l | grep $KEYGREP > actemp1.txt
-crontab -l | grep -v $KEYGREP > actemp0.txt
-
-
+crontab -l | grep "^[^#].*$KEYGREP$" > actemp1.txt
+crontab -l | grep -v "^[^#].*$KEYGREP$" > actemp0.txt
 
 choice=0
 while [[ $choice != 4 ]]
